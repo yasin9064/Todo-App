@@ -9,8 +9,10 @@ class Todo {
 
 class TodoProvider with ChangeNotifier {
   final List<Todo> _todos = [];
+  final List<Todo> _trash = [];
 
   List<Todo> get todos => _todos;
+  List<Todo> get trash => _trash;
 
   void addTodo(String title) {
     _todos.add(Todo(title: title));
@@ -23,7 +25,19 @@ class TodoProvider with ChangeNotifier {
   }
 
   void removeTodoAt(int index) {
-    _todos.removeAt(index);
+    final todo = _todos.removeAt(index);
+    _trash.add(todo);
+    notifyListeners();
+  }
+
+  void restoreTodoAt(int index) {
+    final todo = _trash.removeAt(index);
+    _todos.add(todo);
+    notifyListeners();
+  }
+
+  void deleteTodoPermanently(int index) {
+    _trash.removeAt(index);
     notifyListeners();
   }
 }

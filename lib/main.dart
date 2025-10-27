@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'todo_provider.dart';
 import 'theme.dart';
 import 'todo_item.dart';
+import 'trash_screen.dart';
 
 void main() {
   runApp(
@@ -84,6 +85,17 @@ class TodoListScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Ready Todo'),
         centerTitle: true,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.delete),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const TrashScreen()),
+              );
+            },
+          ),
+        ],
       ),
       body: todoProvider.todos.isEmpty
           ? Center(
