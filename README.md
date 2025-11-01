@@ -3,9 +3,9 @@
 <table>
 
 <tr>
-  <th>Home Screen View</th>
-  <th>SignUp Page View</th>
-  <th>SignIn Page View</th>
+  <th>1st View</th>
+  <th>2nd View</th>
+  <th>3rd View</th>
 </tr>
 
 <td>
